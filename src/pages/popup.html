@@ -1,16 +1,23 @@
 <!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tab Volume</title>
+    <link rel="stylesheet" href="/src/assets/css/index.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module">
+      import AppPopup from '~/components/App/AppPopup.vue'
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tab Volume</title>
-  <script type="module" src="/src/assets/sass/global/index.sass"></script>
-  <script type="module" src="/src/scripts/popup.ts"></script>
-</head>
+      chrome.runtime.connect({ name: 'popup' })
 
-<body>
-  <div id="app"></div>
-</body>
+      const app = createApp(AppPopup)
 
+      app.provide('currentTabId', await getCurrentTabId())
+
+      app.mount('#app')
+    </script>
+  </body>
 </html>

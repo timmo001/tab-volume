@@ -1,3 +1,1 @@
-export function loc (...args: Parameters<typeof chrome.i18n.getMessage>) {
-  return chrome.i18n.getMessage(...args)
-}
+export const loc = chrome.i18n.getMessage

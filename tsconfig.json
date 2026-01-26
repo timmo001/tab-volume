@@ -1,27 +1,37 @@
 {
   "compilerOptions": {
-    "forceConsistentCasingInFileNames": true,
+    "target": "es2020",
     "jsx": "preserve",
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "skipLibCheck": true,
-    "strict": true,
-    "allowJs": true,
+    "lib": ["DOM", "ESNext"],
     "baseUrl": ".",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "paths": {
-      "@/*": ["./src/*"],
+      "~": ["src"],
+      "~/*": ["src/*"],
+      "~~": ["."],
+      "~~/*": ["./*"]
     },
-    "noEmit": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": true,
     "types": [
-      "chrome-types",
+      "vite/client",
+      "chrome"
     ],
+    "allowImportingTsExtensions": true,
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "noUnusedLocals": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true
   },
   "exclude": [
     "dist",
+    "build",
+    "node_modules",
+    ".vscode"
   ]
 }

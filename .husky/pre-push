@@ -1,0 +1,1 @@
+concurrently -n typecheck,lint 'pnpm:typecheck' 'pnpm:lint'

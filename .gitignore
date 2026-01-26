@@ -1,6 +1,10 @@
-# Dev and build
 node_modules
-dist*
-
-# Auto importing components for Vue
+build
+dist
+dist-ssr
+*.local
+*.log
+*.tsbuildinfo
 components.d.ts
+auto-imports.d.ts
+.eslintrc-auto-import.json

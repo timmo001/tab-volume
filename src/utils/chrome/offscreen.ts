@@ -1,27 +1,5 @@
-let creatingPromise: Promise<void> | null
-
-export async function setupOffscreenDocument (parameters: chrome.offscreen.CreateParameters) {
-  const url = chrome.runtime.getURL(parameters.url)
-
-  const existingContexts = await chrome.runtime.getContexts({
-    contextTypes: ['OFFSCREEN_DOCUMENT'],
-    documentUrls: [url],
-  })
-
-  if (existingContexts.length > 0) {
-    return
-  }
-
-  if (creatingPromise) {
-    await creatingPromise
-  } else {
-    creatingPromise = chrome.offscreen.createDocument({
-      ...parameters,
-      url,
-    })
-
-    await creatingPromise
-
-    creatingPromise = null
-  }
-}
+export const createOffscreenDocument = pMemoize(async () => {
+  const context = await chrome.runtime.getContexts({ contextTypes: [chrome.runtime.ContextType.OFFSCREEN_DOCUMENT] })
+  if (context.length) return
+  return chrome.offscreen.createDocument({ url: '/src/pages/offscreen.html', reasons: [chrome.offscreen.Reason.USER_MEDIA], justification: loc('offscreen_justification') })
+}, { cache: false })

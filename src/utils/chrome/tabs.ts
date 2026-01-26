@@ -1,38 +1,18 @@
-import { isUndefined } from 'lodash'
+export const getCurrentTab = () => chrome.tabs.query({ active: true, lastFocusedWindow: true }).then(([tab]) => tab)
 
-export async function getCurrentTab () {
-  const [tab] = await chrome.tabs.query({ active: true, lastFocusedWindow: true })
+export const getCurrentTabId = async () => (await getCurrentTab())?.id
 
-  return tab
+export const getAudibleTabs = () => chrome.tabs.query({ audible: true })
+
+export async function tabFocus(tabId: TabId) {
+  const tab = await chrome.tabs.update(tabId, { active: true })
+  if (tab) chrome.windows.update(tab.windowId, { focused: true })
 }
 
-export function getAllTabs () {
-  return chrome.tabs.query({})
+export function listenTabUpdated(...args: Parameters<typeof chrome.tabs.onUpdated.addListener>) {
+  chrome.tabs.onUpdated.addListener(...args)
 }
 
-export function isTabIdEmpty (tabId: number | undefined): tabId is undefined {
-  return isUndefined(tabId) || tabId === chrome.tabs.TAB_ID_NONE
-}
-
-export async function processCurrentTab<TReturn> (fn: (tabId: number) => TReturn): Promise<TReturn> {
-  const currentTab = await getCurrentTab()
-
-  return fn(currentTab.id as number)
-}
-
-export function createTab (...args: Parameters<typeof chrome.tabs.create>) {
-  chrome.tabs.create(...args)
-}
-
-export function tabsOnRemoved (...args: Parameters<typeof chrome.tabs.onRemoved.addListener>) {
+export function listenTabRemoved(...args: Parameters<typeof chrome.tabs.onRemoved.addListener>) {
   chrome.tabs.onRemoved.addListener(...args)
-}
-
-export function setTabActive (tab: chrome.tabs.Tab) {
-  if (isUndefined(tab.id)) {
-    return
-  }
-
-  chrome.windows.update(tab.windowId, { focused: true })
-  chrome.tabs.update(tab.id, { active: true })
 }
