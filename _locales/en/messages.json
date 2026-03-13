@@ -15,14 +15,8 @@
   "popup_reset_button": {
     "message": "Reset"
   },
-  "popup_header_logo_link_title": {
-    "message": "Open the extension page in the Chrome Web Store"
-  },
   "popup_header_settings_link_title": {
     "message": "Open settings"
-  },
-  "options_logo_link_title": {
-    "message": "Leave a review for the extension"
   },
   "options_label_dark_mode": {
     "message": "Dark theme"
@@ -33,28 +27,13 @@
   "options_label_tips_hide": {
     "message": "Hide tips"
   },
-  "options_footer_review": {
-    "message": "<a href=\"$EXTENSION_LINK$\" target=\"_blank\">Leave a review</a> for the extension",
-    "placeholders": {
-      "EXTENSION_LINK": { "content": "$1" }
-    }
-  },
-  "options_footer_support": {
-    "message": "Support the author on <a href=\"https://boosty.to/wokalek/donate\" target=\"_blank\">Boosty</a>"
-  },
   "options_footer_github": {
-    "message": "Extension source code on <a href=\"http://github.com/wokalek/tab-volume\" target=\"_blank\">GitHub</a>"
+    "message": "Extension source code on <a href=\"http://github.com/wokalek/tab-volume-balance\" target=\"_blank\">GitHub</a>"
   },
   "tip_support": {
     "message": "<p>Thank you for using the extension!&nbsp;❤️</p><p>You can support the author on <a href=\"https://boosty.to/wokalek/donate\" target=\"_blank\">Boosty</a></p>"
   },
   "tips_1": {
-    "message": "<p><a href=\"$EXTENSION_LINK$\" target=\"_blank\">Share</a> your feedback about the extension</p>",
-    "placeholders": {
-      "EXTENSION_LINK": { "content": "$1" }
-    }
-  },
-  "tips_2": {
     "message": "<p>Enter <strong>chrome://extensions/shortcuts</strong> in the address bar and configure your keyboard shortcuts to control tab balance</p>"
   }
 }
