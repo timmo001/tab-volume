@@ -20,7 +20,7 @@ A convenient and attractive extension for adjusting sound volume in a browser ta
 | `Shift + Alt + Down` | Decrease volume |
 | `Shift + Alt + Left` | Pan audio to the left |
 | `Shift + Alt + Right` | Pan audio to the right |
-| *(unassigned)* | Reset balance to center |
+| `Shift + Alt + Up` | Reset balance to center |
 
 Shortcuts can be reassigned at `chrome://extensions/shortcuts`. Chrome limits extensions to 4 commands, so only the above are registered by default.
 
