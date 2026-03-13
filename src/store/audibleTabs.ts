@@ -9,15 +9,11 @@ export const $audibleTabs = xoid.atom(<Record<TabId, TabInfo>>{}, state => ({
           title: tab.title,
           favIconUrl: tab.favIconUrl,
           balance: $balance.actions.get(tab.id) ?? BALANCE_DEFAULT,
-          muted: $mute.actions.get(tab.id),
         } satisfies TabInfo)
       }, _.cloneDeep(state.value))
   },
   updateBalance: () => {
     state.value = _.each(_.cloneDeep(state.value), tabInfo => tabInfo.balance = $balance.actions.get(tabInfo.id) ?? BALANCE_DEFAULT)
-  },
-  updateMute: () => {
-    state.value = _.each(_.cloneDeep(state.value), tabInfo => tabInfo.muted = $mute.actions.get(tabInfo.id))
   },
 }))
 
@@ -26,6 +22,5 @@ listenTabUpdated((_, changeInfo) => {
 })
 
 $balance.subscribe($audibleTabs.actions.updateBalance)
-$mute.subscribe($audibleTabs.actions.updateMute)
 
 $audibleTabs.actions.fetch()

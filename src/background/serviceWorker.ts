@@ -4,16 +4,6 @@ async function actionBalance({ tabId, balance }: MessageData['serviceWorker']['b
   sendMessage('offscreen', 'balance', { tabId, balance, mediaStreamId: await $mediaStreamId.actions.setOrGet(tabId) })
 }
 
-async function actionToggle({ tabId }: MessageData['serviceWorker']['toggle']) {
-  setBedge(tabId, $mute.actions.get(tabId) ? '' : 'mute')
-  await createOffscreenDocument()
-  sendMessage('offscreen', 'toggle', {
-    tabId,
-    mute: $mute.actions.toggle(tabId),
-    mediaStreamId: await $mediaStreamId.actions.setOrGet(tabId),
-  })
-}
-
 async function actionStop({ tabId }: MessageData['serviceWorker']['stop']) {
   setBedge(tabId, '')
   await createOffscreenDocument()
@@ -25,7 +15,6 @@ listenMessage((payload) => {
 
   switch (payload.action) {
     case 'balance': return actionBalance(payload.data)
-    case 'toggle': return actionToggle(payload.data)
     case 'stop': return actionStop(payload.data)
   }
 })
@@ -47,15 +36,12 @@ listenCommand((command, tab) => {
 
     actionBalance({ tabId: tab.id, balance: `${newBalance}` })
   }
-
-  if (command === CommandsEnum.toggle) actionToggle({ tabId: tab.id })
 })
 
 listenInstalled(({ reason }) => {
   if (reason !== chrome.runtime.OnInstalledReason.UPDATE) return
 
   $balance.actions.removeAll()
-  $mute.actions.removeAll()
   $mediaStreamId.actions.removeAll()
 })
 
@@ -63,7 +49,6 @@ listenTabRemoved(async (tabId) => {
   if (!$mediaStreamId.actions.has(tabId)) return
 
   $balance.actions.remove(tabId)
-  $mute.actions.remove(tabId)
   $mediaStreamId.actions.remove(tabId)
   await createOffscreenDocument()
   sendMessage('offscreen', 'stop', { tabId })
@@ -75,7 +60,6 @@ listenCaptureStatus(({ status, tabId }) => {
 
   setBedge(tabId, '')
   $balance.actions.remove(tabId)
-  $mute.actions.remove(tabId)
   $mediaStreamId.actions.remove(tabId)
 })
 

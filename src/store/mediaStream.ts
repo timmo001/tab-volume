@@ -12,16 +12,6 @@ export const $mediaStream = xoid.atom(new Map<TabId, [MediaStreamAudioSourceNode
 
     pannerNode.pan.value = Number((+balance / 100).toFixed(2))
   },
-  toggle: async (tabId: TabId, mute: boolean, mediaStreamId: string) => {
-    const [, gainNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
-
-    if (mute === false) {
-      $mediaStream.actions.remove(tabId)
-    }
-    else {
-      gainNode.gain.value = 0
-    }
-  },
   remove: (tabId: TabId) => {
     const [sourceNode] = state.value.get(tabId) ?? []
     if (!sourceNode) return

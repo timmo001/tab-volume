@@ -2,10 +2,6 @@ function actionBalance({ tabId, balance, mediaStreamId }: MessageData['offscreen
   $mediaStream.actions.balance(tabId, balance, mediaStreamId)
 }
 
-function actionToggle({ tabId, mute, mediaStreamId }: MessageData['offscreen']['toggle']) {
-  $mediaStream.actions.toggle(tabId, mute, mediaStreamId)
-}
-
 function actionStop({ tabId }: MessageData['offscreen']['stop']) {
   $mediaStream.actions.remove(tabId)
 }
@@ -15,7 +11,6 @@ listenMessage((payload) => {
 
   switch (payload.action) {
     case 'balance': return actionBalance(payload.data)
-    case 'toggle': return actionToggle(payload.data)
     case 'stop': return actionStop(payload.data)
   }
 })

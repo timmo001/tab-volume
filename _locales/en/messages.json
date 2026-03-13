@@ -6,9 +6,6 @@
   "manifest_description": {
     "message": "Adjust the volume of the current browser tab"
   },
-  "manifest_commands_toggle": {
-    "message": "Toggle tab mute"
-  },
   "offscreen_justification": {
     "message": "Capturing the audio stream of a browser tab"
   },

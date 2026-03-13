@@ -1,12 +1,10 @@
 export interface MessageData {
   serviceWorker: {
     balance: { tabId: TabId, balance: string }
-    toggle: { tabId: TabId }
     stop: { tabId: TabId }
   }
   offscreen: {
     balance: { tabId: TabId, balance: string, mediaStreamId: string }
-    toggle: { tabId: TabId, mute: boolean, mediaStreamId: string }
     stop: { tabId: TabId }
   }
 }
