@@ -8,10 +8,6 @@
         </a>
       </header>
       <form class="grid grid-cols-[1fr_auto] font-arial items-baseline gap-x-2.5 gap-y-5 mb-10 [&>label]:text-base [&>label]:leading-[130%] [&>label]:col-span [&>label]:-m-2 [&>label]:p-2 [&>label]:cursor-pointer [&>label]:select-none">
-        <label for="maxVolume">{{ loc('options_label_max_volume') }}</label>
-        <div class="flex justify-center">
-          <BaseInputNumber v-model="options.maxVolume" :pt-input="{ id: 'maxVolume', min: volumeMax, max: 999 }" :floor-to="-1" @change="save" />
-        </div>
         <label for="darkMode">{{ loc('options_label_dark_mode') }}</label>
         <div class="flex justify-center">
           <BaseCheckbox v-model="options.darkMode" :pt-input="{ id: 'darkMode' }" @change="save" />
@@ -39,8 +35,6 @@ import SvgLogoName from '~/assets/images/logo-name.svg?component'
 
 const options = useOptions()
 const extensionLink = useExtensionLink()
-
-const volumeMax = VOLUME_MAX
 
 function save() {
   $options.actions.set(options.value)

@@ -6,12 +6,6 @@
   "manifest_description": {
     "message": "Регулировка громкости на вкладке браузера"
   },
-  "manifest_commands_volume_up": {
-    "message": "Увеличить громкость"
-  },
-  "manifest_commands_volume_down": {
-    "message": "Уменьшить громкость"
-  },
   "manifest_commands_toggle": {
     "message": "Включение/выключение звука во вкладке"
   },
@@ -30,14 +24,11 @@
   "options_logo_link_title": {
     "message": "Оставить отзыв о расширении"
   },
-  "options_label_max_volume": {
-    "message": "Максимальная громкость"
-  },
   "options_label_dark_mode": {
     "message": "Тёмная тема"
   },
   "options_label_stop_on_reload": {
-    "message": "Восстанавливать изменение громкости при перезагрузке вкладки"
+    "message": "Восстанавливать изменения при перезагрузке вкладки"
   },
   "options_label_tips_hide": {
     "message": "Скрыть советы"
@@ -64,9 +55,6 @@
     }
   },
   "tips_2": {
-    "message": "<p>Используйте колёсико мышки, чтобы быстро изменять громкость</p><p>Зажмите <kbd>Ctrl</kbd>, чтобы изменять громкость на&nbsp;1%</p>"
-  },
-  "tips_3": {
-    "message": "<p>Введите <strong>chrome://extensions/shortcuts</strong> в&nbsp;адресную строку и&nbsp;настройте свои комбинации клавиш для изменения громкости вкладки</p>"
+    "message": "<p>Введите <strong>chrome://extensions/shortcuts</strong> в&nbsp;адресную строку и&nbsp;настройте свои комбинации клавиш для изменения баланса вкладки</p>"
   }
 }

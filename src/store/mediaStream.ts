@@ -7,24 +7,19 @@ export const $mediaStream = xoid.atom(new Map<TabId, [MediaStreamAudioSourceNode
 
     return userMedia
   }, { cache: false }),
-  volume: async (tabId: TabId, volume: string, mediaStreamId: string) => {
-    const [, gainNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
-
-    gainNode.gain.value = Number((+volume / 100).toFixed(2))
-  },
   balance: async (tabId: TabId, balance: string, mediaStreamId: string) => {
     const [,, pannerNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
 
     pannerNode.pan.value = Number((+balance / 100).toFixed(2))
   },
-  toggle: async (tabId: TabId, volume: string, mute: boolean, mediaStreamId: string) => {
+  toggle: async (tabId: TabId, mute: boolean, mediaStreamId: string) => {
     const [, gainNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
 
-    if (mute === false && volume === VOLUME_DEFAULT) {
+    if (mute === false) {
       $mediaStream.actions.remove(tabId)
     }
     else {
-      gainNode.gain.value = mute ? 0 : Number((+volume / 100).toFixed(2))
+      gainNode.gain.value = 0
     }
   },
   remove: (tabId: TabId) => {

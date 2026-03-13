@@ -28,10 +28,6 @@ export default defineManifest({
   },
   options_page: 'src/pages/options.html',
   commands: {
-    volumeDown: {
-      description: '__MSG_manifest_commands_volume_down__',
-      suggested_key: { default: 'Shift+Alt+Down' },
-    },
     balanceLeft: {
       description: 'Balance left',
       suggested_key: { default: 'Shift+Alt+Left' },

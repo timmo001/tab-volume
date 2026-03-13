@@ -1,13 +1,9 @@
-function actionChange({ tabId, volume, mediaStreamId }: MessageData['offscreen']['change']) {
-  $mediaStream.actions.volume(tabId, volume, mediaStreamId)
-}
-
 function actionBalance({ tabId, balance, mediaStreamId }: MessageData['offscreen']['balance']) {
   $mediaStream.actions.balance(tabId, balance, mediaStreamId)
 }
 
-function actionToggle({ tabId, volume, mute, mediaStreamId }: MessageData['offscreen']['toggle']) {
-  $mediaStream.actions.toggle(tabId, volume, mute, mediaStreamId)
+function actionToggle({ tabId, mute, mediaStreamId }: MessageData['offscreen']['toggle']) {
+  $mediaStream.actions.toggle(tabId, mute, mediaStreamId)
 }
 
 function actionStop({ tabId }: MessageData['offscreen']['stop']) {
@@ -18,7 +14,6 @@ listenMessage((payload) => {
   if (payload.target !== 'offscreen') return
 
   switch (payload.action) {
-    case 'change': return actionChange(payload.data)
     case 'balance': return actionBalance(payload.data)
     case 'toggle': return actionToggle(payload.data)
     case 'stop': return actionStop(payload.data)

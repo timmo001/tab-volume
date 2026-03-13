@@ -6,12 +6,6 @@
   "manifest_description": {
     "message": "Adjust the volume of the current browser tab"
   },
-  "manifest_commands_volume_up": {
-    "message": "Increase volume"
-  },
-  "manifest_commands_volume_down": {
-    "message": "Decrease volume"
-  },
   "manifest_commands_toggle": {
     "message": "Toggle tab mute"
   },
@@ -30,14 +24,11 @@
   "options_logo_link_title": {
     "message": "Leave a review for the extension"
   },
-  "options_label_max_volume": {
-    "message": "Maximum volume"
-  },
   "options_label_dark_mode": {
     "message": "Dark theme"
   },
   "options_label_stop_on_reload": {
-    "message": "Restore volume changes when the tab is reloaded"
+    "message": "Restore changes when the tab is reloaded"
   },
   "options_label_tips_hide": {
     "message": "Hide tips"
@@ -64,9 +55,6 @@
     }
   },
   "tips_2": {
-    "message": "<p>Use the mouse wheel to quickly adjust the volume</p><p>Hold <kbd>Ctrl</kbd> to change the volume by 1%</p>"
-  },
-  "tips_3": {
-    "message": "<p>Enter <strong>chrome://extensions/shortcuts</strong> in the address bar and configure your keyboard shortcuts to control tab volume</p>"
+    "message": "<p>Enter <strong>chrome://extensions/shortcuts</strong> in the address bar and configure your keyboard shortcuts to control tab balance</p>"
   }
 }

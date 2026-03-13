@@ -4,20 +4,15 @@
 
 # Tab Volume 🎚️
 
-A convenient and attractive extension for adjusting sound volume in a browser tab
+A convenient and attractive extension for adjusting sound in a browser tab
 
-- 🍙 Increase or decrease volume within a browser tab
-- 🍥 Set any upper limit to scale the sound volume
 - 🍣 Displays a list of tabs where sound is playing, allowing you to easily switch between them
-- 🍤 Restore tab volume with one click
-- 🍢 Change volume with hotkey `Shift + Alt + ArrowDown`
 - 🍡 Adjust stereo balance (left/right panning) per tab with a slider or hotkeys `Shift + Alt + ArrowLeft/ArrowRight`
 
 ## Keyboard Shortcuts
 
 | Shortcut | Action |
 | --- | --- |
-| `Shift + Alt + Down` | Decrease volume |
 | `Shift + Alt + Left` | Pan audio to the left |
 | `Shift + Alt + Right` | Pan audio to the right |
 | `Shift + Alt + Up` | Reset balance to center |

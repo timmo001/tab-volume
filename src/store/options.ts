@@ -1,6 +1,5 @@
 export const optionsDefaults: Options = {
   darkMode: false,
-  maxVolume: +VOLUME_MAX,
   stopOnReload: false,
   tipsHide: false,
   tipsHideUntil: undefined,

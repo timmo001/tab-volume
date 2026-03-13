@@ -1,8 +1,6 @@
 <template>
   <div class="w-90 font-arial select-none py-3">
     <PopupHeader />
-    <PopupInput />
-    <PopupRange />
     <PopupBalance />
     <PopupTips v-if="tip" :tip="tip" />
     <PopupReset />
@@ -11,8 +9,6 @@
 </template>
 
 <script setup lang="ts">
-useWheelVolume()
-
 const options = useOptions()
 const tip = useTip()
 
