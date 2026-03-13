@@ -3,5 +3,6 @@ export interface TabInfo {
   title: string
   favIconUrl: chrome.tabs.Tab['favIconUrl']
   volume: string
+  balance: string
   muted: boolean
 }

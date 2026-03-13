@@ -1,6 +1,6 @@
-export const $mediaStream = xoid.atom(new Map<TabId, [MediaStreamAudioSourceNode, GainNode]>(), state => ({
+export const $mediaStream = xoid.atom(new Map<TabId, [MediaStreamAudioSourceNode, GainNode, StereoPannerNode]>(), state => ({
   setOrGet: pMemoize(async (tabId: TabId, mediaStreamId: string) => {
-    if (state.value.has(tabId)) return state.value.get(tabId) as [MediaStreamAudioSourceNode, GainNode]
+    if (state.value.has(tabId)) return state.value.get(tabId) as [MediaStreamAudioSourceNode, GainNode, StereoPannerNode]
 
     const userMedia = await getUserMedia(mediaStreamId)
     state.value = state.value.set(tabId, userMedia)
@@ -11,6 +11,11 @@ export const $mediaStream = xoid.atom(new Map<TabId, [MediaStreamAudioSourceNode
     const [, gainNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
 
     gainNode.gain.value = Number((+volume / 100).toFixed(2))
+  },
+  balance: async (tabId: TabId, balance: string, mediaStreamId: string) => {
+    const [,, pannerNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)
+
+    pannerNode.pan.value = Number((+balance / 100).toFixed(2))
   },
   toggle: async (tabId: TabId, volume: string, mute: boolean, mediaStreamId: string) => {
     const [, gainNode] = await $mediaStream.actions.setOrGet(tabId, mediaStreamId)

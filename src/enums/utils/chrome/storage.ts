@@ -3,4 +3,5 @@ export enum StorageNamespaceEnum {
   volume = 'volume',
   mute = 'mute',
   mediaStreamId = 'mediaStreamId',
+  balance = 'balance',
 }

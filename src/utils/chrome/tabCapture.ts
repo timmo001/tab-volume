@@ -2,14 +2,15 @@ export function getMediaStreamId(tabId: TabId) {
   return chrome.tabCapture.getMediaStreamId({ targetTabId: tabId })
 }
 
-export async function getUserMedia(mediaStreamId: string): Promise<[MediaStreamAudioSourceNode, GainNode]> {
+export async function getUserMedia(mediaStreamId: string): Promise<[MediaStreamAudioSourceNode, GainNode, StereoPannerNode]> {
   const audioCtx = new AudioContext()
   const gainNode = new GainNode(audioCtx)
+  const pannerNode = new StereoPannerNode(audioCtx)
   const sourceNode = audioCtx.createMediaStreamSource(await navigator.mediaDevices.getUserMedia({ audio: { mandatory: { chromeMediaSource: 'tab', chromeMediaSourceId: mediaStreamId } } } as MediaStreamConstraints))
 
-  sourceNode.connect(gainNode).connect(audioCtx.destination)
+  sourceNode.connect(gainNode).connect(pannerNode).connect(audioCtx.destination)
 
-  return [sourceNode, gainNode]
+  return [sourceNode, gainNode, pannerNode]
 }
 
 export function stopCapture(sourceNode: MediaStreamAudioSourceNode) {

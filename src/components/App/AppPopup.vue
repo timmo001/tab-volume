@@ -3,6 +3,7 @@
     <PopupHeader />
     <PopupInput />
     <PopupRange />
+    <PopupBalance />
     <PopupTips v-if="tip" :tip="tip" />
     <PopupReset />
     <PopupTabs />

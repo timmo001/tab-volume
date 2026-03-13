@@ -6,6 +6,12 @@ async function actionChange({ tabId, volume }: MessageData['serviceWorker']['cha
   sendMessage('offscreen', 'change', { tabId, volume, mediaStreamId: await $mediaStreamId.actions.setOrGet(tabId) })
 }
 
+async function actionBalance({ tabId, balance }: MessageData['serviceWorker']['balance']) {
+  $balance.actions.set(tabId, balance)
+  await createOffscreenDocument()
+  sendMessage('offscreen', 'balance', { tabId, balance, mediaStreamId: await $mediaStreamId.actions.setOrGet(tabId) })
+}
+
 async function actionToggle({ tabId }: MessageData['serviceWorker']['toggle']) {
   setBedge(tabId, $mute.actions.get(tabId) ? $volume.actions.get(tabId) ?? '' : 'mute')
   await createOffscreenDocument()
@@ -28,6 +34,7 @@ listenMessage((payload) => {
 
   switch (payload.action) {
     case 'change': return actionChange(payload.data)
+    case 'balance': return actionBalance(payload.data)
     case 'toggle': return actionToggle(payload.data)
     case 'stop': return actionStop(payload.data)
   }
@@ -44,6 +51,21 @@ listenCommand((command, tab) => {
     actionChange({ tabId: tab.id, volume: newVolume })
   }
 
+  if ([CommandsEnum.balanceLeft, CommandsEnum.balanceRight, CommandsEnum.balanceCenter].includes(command as CommandsEnum)) {
+    const current = +($balance.actions.get(tab.id) ?? BALANCE_DEFAULT)
+    let newBalance: number
+
+    if (command === CommandsEnum.balanceCenter) {
+      newBalance = 0
+    }
+    else {
+      const step = command === CommandsEnum.balanceLeft ? -50 : 50
+      newBalance = Math.max(-100, Math.min(100, current + step))
+    }
+
+    actionBalance({ tabId: tab.id, balance: `${newBalance}` })
+  }
+
   if (command === CommandsEnum.toggle) actionToggle({ tabId: tab.id })
 })
 
@@ -51,6 +73,7 @@ listenInstalled(({ reason }) => {
   if (reason !== chrome.runtime.OnInstalledReason.UPDATE) return
 
   $volume.actions.removeAll()
+  $balance.actions.removeAll()
   $mute.actions.removeAll()
   $mediaStreamId.actions.removeAll()
 })
@@ -59,6 +82,7 @@ listenTabRemoved(async (tabId) => {
   if (!$mediaStreamId.actions.has(tabId)) return
 
   $volume.actions.remove(tabId)
+  $balance.actions.remove(tabId)
   $mute.actions.remove(tabId)
   $mediaStreamId.actions.remove(tabId)
   await createOffscreenDocument()
@@ -71,6 +95,7 @@ listenCaptureStatus(({ status, tabId }) => {
 
   setBedge(tabId, '')
   $volume.actions.remove(tabId)
+  $balance.actions.remove(tabId)
   $mute.actions.remove(tabId)
   $mediaStreamId.actions.remove(tabId)
 })
@@ -99,6 +124,7 @@ listenConnect(async (port) => {
 
   port.onDisconnect.addListener(async () => {
     if ($volume.actions.get(tabId) !== VOLUME_DEFAULT) return
+    if ($balance.actions.get(tabId) !== undefined && $balance.actions.get(tabId) !== BALANCE_DEFAULT) return
 
     setBedge(tabId, '')
     await createOffscreenDocument()

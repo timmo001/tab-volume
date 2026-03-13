@@ -35,6 +35,17 @@ export default defineManifest({
       description: '__MSG_manifest_commands_volume_down__',
       suggested_key: { default: 'Shift+Alt+Down' },
     },
+    balanceLeft: {
+      description: 'Balance left',
+      suggested_key: { default: 'Shift+Alt+Left' },
+    },
+    balanceRight: {
+      description: 'Balance right',
+      suggested_key: { default: 'Shift+Alt+Right' },
+    },
+    balanceCenter: {
+      description: 'Balance center',
+    },
     toggle: {
       description: '__MSG_manifest_commands_toggle__',
       suggested_key: { default: 'Shift+Alt+M' },
