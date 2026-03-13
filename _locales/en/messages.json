@@ -4,7 +4,7 @@
     "description": "[Leave the text in English]"
   },
   "manifest_description": {
-    "message": "Adjust the volume of the current browser tab"
+    "message": "Adjust the stereo balance of the current browser tab. Fork of Tab Volume by wokalek."
   },
   "offscreen_justification": {
     "message": "Capturing the audio stream of a browser tab"
