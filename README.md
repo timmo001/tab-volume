@@ -1,8 +1,7 @@
-<p align="center">
-  <img src="./webstore/images/promo/marquee.png" />
-</p>
+# Tab Volume Balance
 
-# Tab Volume 🎚️
+> [!NOTE]
+> This is a fork of [wokalek/tab-volume](https://github.com/wokalek/tab-volume) with volume control removed, keeping only stereo balance and mute functionality. All original code belongs to the original author. This fork is for personal use only.
 
 A convenient and attractive extension for adjusting sound in a browser tab
 
