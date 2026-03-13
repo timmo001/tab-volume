@@ -41,6 +41,7 @@ export default defineManifest({
     },
     balanceCenter: {
       description: 'Balance center',
+      suggested_key: { default: 'Shift+Alt+Up' },
     },
   },
 })

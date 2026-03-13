@@ -10,8 +10,19 @@ A convenient and attractive extension for adjusting sound volume in a browser ta
 - 🍥 Set any upper limit to scale the sound volume
 - 🍣 Displays a list of tabs where sound is playing, allowing you to easily switch between them
 - 🍤 Restore tab volume with one click
-- 🍢 Change volume with hotkeys `Shift + Alt + ArrowUp/ArrowDown`
+- 🍢 Change volume with hotkey `Shift + Alt + ArrowDown`
 - 🍡 Adjust stereo balance (left/right panning) per tab with a slider or hotkeys `Shift + Alt + ArrowLeft/ArrowRight`
+
+## Keyboard Shortcuts
+
+| Shortcut | Action |
+| --- | --- |
+| `Shift + Alt + Down` | Decrease volume |
+| `Shift + Alt + Left` | Pan audio to the left |
+| `Shift + Alt + Right` | Pan audio to the right |
+| *(unassigned)* | Reset balance to center |
+
+Shortcuts can be reassigned at `chrome://extensions/shortcuts`. Chrome limits extensions to 4 commands, so only the above are registered by default.
 
 ## Localization
 
