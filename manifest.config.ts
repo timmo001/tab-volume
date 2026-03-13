@@ -27,10 +27,6 @@ export default defineManifest({
   },
   options_page: 'src/pages/options.html',
   commands: {
-    volumeUp: {
-      description: '__MSG_manifest_commands_volume_up__',
-      suggested_key: { default: 'Shift+Alt+Up' },
-    },
     volumeDown: {
       description: '__MSG_manifest_commands_volume_down__',
       suggested_key: { default: 'Shift+Alt+Down' },
@@ -45,10 +41,6 @@ export default defineManifest({
     },
     balanceCenter: {
       description: 'Balance center',
-    },
-    toggle: {
-      description: '__MSG_manifest_commands_toggle__',
-      suggested_key: { default: 'Shift+Alt+M' },
     },
   },
 })
