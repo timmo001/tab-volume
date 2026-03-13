@@ -6,6 +6,7 @@ export default defineManifest({
   manifest_version: 3,
   name: '__MSG_manifest_name__',
   version: pkg.version,
+  version_name: `${pkg.version}-timmo001-custom`,
   minimum_chrome_version: '116',
   description: '__MSG_manifest_description__',
   default_locale: 'en',
