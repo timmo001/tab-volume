@@ -1,6 +1,6 @@
 export const optionsDefaults: Options = {
-  darkMode: false,
-  stopOnReload: false,
+  darkMode: true,
+  stopOnReload: true,
   tipsHide: false,
   tipsHideUntil: undefined,
   tipsLastShowedIndex: undefined,
